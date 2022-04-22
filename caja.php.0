@@ -1,0 +1,621 @@
+
+<?php
+// Solo se permite el ingreso con el inicio de sesion.
+session_start();
+// Si el usuario no se ha logueado se le regresa al inicio.
+if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
+    header('Location: index.html');
+    exit;
+}
+?>
+
+<!doctype html>
+<html >
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta name="description" content="">
+        <meta name="author" content="">
+        <link rel="icon" href="favicon.ico">
+        <title>Verificacion</title>
+        <!-- Bootstrap core CSS -->
+        <link href="dist/css/bootstrap.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="dist/css/style.css">
+        <link rel="stylesheet" href="css/style.css">
+        <link rel="stylesheet" href="assets/animacion.css">
+        <!-- Custom styles for this template -->
+        <link href="assets/css/sticky-footer-navbar.css" rel="stylesheet">
+        <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.1/themes/base/jquery-ui.css" />
+        <style>
+
+            .divimg {
+                width:600px;
+                height:400px;
+                line-height:400px;
+                margin:0px auto;
+                text-align:center;
+                background-color:#FFFFF;
+            }
+
+            .divimg img {
+                vertical-align:middle;
+            }
+
+
+
+            check{
+                background-color: #8DF961
+            }
+            error{
+                background-color: #F96161
+            }
+
+            .contenedor-circulo{
+                width:100px;
+                height: 100px;
+                margin:0 auto; 
+                text-align:center;
+                background: #E5E5E5;
+                border-radius:50%;
+            }
+            .circulo {
+                display:inline-block;
+                width: 20px;
+                height: 20px;
+                margin-top: 100px;
+                background:#F96161;
+                border-radius:50%;
+                animation: girar 3s infinite linear;
+            }
+            @keyframes girar {
+                from { transform: rotate(0deg)  translate(-15px) rotate(0deg); }
+                to { transform: rotate(350deg) translate(-15px) rotate(-350deg); }
+            }
+
+            div#fondo{
+                width:500px;
+                height:500px;
+                background-image: url(img/foto_traserabearing.jpg);
+                background-repeat:no-repeat;
+                background-size:cover;
+                background-position:center center;
+            }
+
+
+
+
+        </style>
+
+
+    </head>
+
+    <body style="background-color:#FFFFFF;">
+
+        <!-- <header>
+        <!-- NAVBAR -->
+        <nav class="navbar navbar-expand-md bg-dark navbar-dark" style="background-color: #AF290C">
+            <div class="container-fluid">
+                <div text-white class="navbar-header">
+                    <a style="color:#FFFFFF";  > <h4> PROYECTO Urban Line</h4> </a>
+                    <a style="color:#FFFFFF";  > <h5> Inspector : <?php echo htmlspecialchars($_SESSION["username"]); ?> </h5> </a>
+
+                </div>
+                <ul class="nav navbar-nav navbar-right">
+
+                    <form action="exit.php"> 
+                        <button type="submit" class="btn btn-danger" type="button" >Cerrar Sesion</button>
+                    </form>
+
+                </ul>
+            </div>
+
+        </nav>
+
+
+
+
+
+        <!-- Begin page content -->
+
+        <div class="container">
+            <!--INICIA OTRO APARTADO-->
+            <div class="row align-items-start">
+                <div class="col">
+                    <!-- Inicia Tabla -->   
+                    <h3 >CAJA DE RODAMIENTO</h3>
+                    <a> 
+                        Torque
+                        480 Kg/cm2
+                        M12 X 30
+                        ( 8 pzas.)
+
+                    </a>
+                    <p>rondana presión
+                        dureza 4.8</p> 
+                    <p>
+
+                    </p>
+                    <table style="margin: 0 auto;" class="table table-bordered">
+                        <thead class="black white-text">
+                            <tr>
+                                <th scope="col">Valor minimo</th>
+                                <th scope="col">Valor maximo</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>432 Kg/cm2</td>
+                                <td>528 Kg/cm2</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <hr>
+                    <button type="button" class="btn btn-success" onCLick="history.go(0)"> Cargar valor </button>
+                    <form action="terminaProceso.php" >
+                        <div  class="pt-1 mb-4"> 
+                            <button  class="btn btn-danger" type="submit" id="submit" name="borrar" > Terminar proceso </button>
+                        </div>
+                    </form>   
+
+
+
+
+                    <!-- Inicia Tabla -->   
+
+                    <?php
+                    include "DataBaseConfig.php";
+                    $query = "SELECT * FROM crtornillo1 WHERE id = '1'";
+                    $query2 = "SELECT * FROM crtornillo2 WHERE id = '1'";
+                    $query22 = "SELECT * FROM crtornillo22 WHERE id = '1'";
+                    $query3 = "SELECT * FROM crtornillo3 WHERE id = '1'";
+                    $query33 = "SELECT * FROM  crtornillo33 WHERE id = '1'";
+                    $query4 = "SELECT * FROM  crtornillo4 WHERE id = '1'";
+                    $query44 = "SELECT * FROM  crtornillo44 WHERE id = '1'";
+                    $query5 = "SELECT * FROM  crtornillo5 WHERE id = '1'";
+                    $query6 = "SELECT * FROM crtornillo6 WHERE id = '1'";
+                    $query66 = "SELECT * FROM crtornillo66 WHERE id = '1'";
+                    $query7 = "SELECT * FROM crtornillo7 WHERE id = '1'";
+                    $query77 = "SELECT * FROM crtornillo77 WHERE id = '1'";
+                    $query8 = "SELECT * FROM crtornillo8 WHERE id = '1'";
+                    $query88 = "SELECT * FROM crtornillo88 WHERE id = '1'";
+
+                    $result = $db->query($query);
+                    $result2 = $db->query($query2);
+                    $result22 = $db->query($query22);
+                    $result3 = $db->query($query3);
+                    $result33 = $db->query($query33);
+                    $result4 = $db->query($query4);
+                    $result44 = $db->query($query44);
+                    $result5 = $db->query($query5);
+                    $result6 = $db->query($query6);
+                    $result66 = $db->query($query66);
+                    $result7 = $db->query($query7);
+                    $result77 = $db->query($query77);
+                    $result8 = $db->query($query8);
+                    $result88 = $db->query($query88);
+                    ?>
+
+                    <table class='table table-condensed small'  >
+                        <thead> 
+                            <tr>
+                                <th>No. Torque </th>
+                                <th>Mesured Torque</th>
+                                <th>Fecha</th>
+                                <th>Tiempo</th>
+                                <th>Juicio</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+
+
+                            <?php /* include("function.php"); */ ?>
+
+                            <?php while ($torque = $result->fetchObject()) { ?>
+                                <tr>
+                                    <td> 1 </td>                          
+                                    <td id ="val" <?php
+                                if ($torque->medida >= 528) {
+                                    echo 'style="background-color: #F96161 "';
+                                } else {
+                                    if ($torque->medida <= 432) {
+                                        echo 'style="background-color: #FFF300 "';
+                                    } else {
+                                        echo 'style="background-color: #8DF961"';
+                                    }
+                                }
+                                ?>><?php echo $torque->medida ?></td>
+                                    <td><?php echo $torque->fecha ?></td>
+                                    <td><?php echo $torque->hora ?></td>
+                                    <td> <button class="btn btn-primary" id="myImage1" onclick="changeImage1()" src="pulsa.png" width="150" height="150">Verificar</button>   </td>
+                                    <td><form action="borraCRtornillo1.php" > <button  class="btn btn-danger" type="submit" id="submit" name="borrar" > Reintentar </button>  </form>   </td>
+
+                                </tr>
+                            <?php } ?>
+
+                            <?php while ($torque = $result2->fetchObject()) { ?>
+                                <tr>
+                                    <td> 2 </td>                          
+                                    <td <?php
+                                if ($torque->medida >= 528) {
+                                    echo 'style="background-color: #F96161 "';
+                                } else {
+                                    if ($torque->medida <= 432) {
+                                        echo 'style="background-color: #FFF300 "';
+                                    } else {
+                                        echo 'style="background-color: #8DF961"';
+                                    }
+                                }
+                                ?>><?php echo $torque->medida ?></td>
+                                    <td><?php echo $torque->fecha ?></td>
+                                    <td><?php echo $torque->hora ?></td>
+                                    <td> <button class="btn btn-primary" id="myImage1" onclick="changeImage2()" src="pulsa.png" width="150" height="150">Verificar</button>   </td>
+                                    <td><form action="borraCRtornillo2.php" > <button  class="btn btn-danger" type="submit" id="submit" name="borrar" > Reintentar </button>  </form>   </td>
+                                </tr>
+                            <?php } ?>
+
+                            <?php while ($torque = $result22->fetchObject()) { ?>
+                                <tr>
+                                    <td> 2 </td>                          
+                                    <td <?php
+                                if ($torque->medida >= 528) {
+                                    echo 'style="background-color: #F96161 "';
+                                } else {
+                                    if ($torque->medida <= 432) {
+                                        echo 'style="background-color: #FFF300 "';
+                                    } else {
+                                        echo 'style="background-color: #8DF961"';
+                                    }
+                                }
+                                ?>><?php echo $torque->medida ?></td>
+                                    <td><?php echo $torque->fecha ?></td>
+                                    <td><?php echo $torque->hora ?></td>
+                                    <td> <button class="btn btn-primary" id="myImage1" onclick="changeImage22()" src="pulsa.png" width="150" height="150">Verificar</button>   </td>
+                                    <td><form action="borrarCRtornillo22.php" > <button  class="btn btn-danger" type="submit" id="submit" name="borrar" > Reintentar </button>  </form>   </td>
+                                </tr>
+                            <?php } ?>
+
+                            <?php while ($torque = $result3->fetchObject()) { ?>
+                                <tr>
+                                    <td> 3 </td>                          
+                                    <td <?php
+                                if ($torque->medida >= 528) {
+                                    echo 'style="background-color: #F96161 "';
+                                } else {
+                                    if ($torque->medida <= 432) {
+                                        echo 'style="background-color: #FFF300 "';
+                                    } else {
+                                        echo 'style="background-color: #8DF961"';
+                                    }
+                                }
+                                ?>><?php echo $torque->medida ?></td>
+                                    <td><?php echo $torque->fecha ?></td>
+                                    <td><?php echo $torque->hora ?></td>
+                                    <td> <button class="btn btn-primary" id="myImage1" onclick="changeImage3()" src="pulsa.png" width="150" height="150">verificar</button>   </td>
+                                    <td><form action="borraCRtornillo3.php" > <button  class="btn btn-danger" type="submit" id="submit" name="borrar" > Reintentar </button>  </form>   </td>
+                                </tr>
+                            <?php } ?>
+
+                            <?php while ($torque = $result33->fetchObject()) { ?>
+                                <tr>
+                                    <td> 3 </td>                          
+                                    <td <?php
+                                if ($torque->medida >= 528) {
+                                    echo 'style="background-color: #F96161 "';
+                                } else {
+                                    if ($torque->medida <= 432) {
+                                        echo 'style="background-color: #FFF300 "';
+                                    } else {
+                                        echo 'style="background-color: #8DF961"';
+                                    }
+                                }
+                                ?>><?php echo $torque->medida ?></td>
+                                    <td><?php echo $torque->fecha ?></td>
+                                    <td><?php echo $torque->hora ?></td>
+                                    <td> <button class="btn btn-primary" id="myImage1" onclick="changeImage33()" src="pulsa.png" width="150" height="150">verificar</button>   </td>
+                                    <td><form action="borrarCRtornillo33.php" > <button  class="btn btn-danger" type="submit" id="submit" name="borrar" > Reintentar </button>  </form>   </td>
+                                </tr>
+                            <?php } ?>
+
+                            <?php while ($torque = $result4->fetchObject()) { ?>
+                                <tr>
+                                    <td> 4 </td>                          
+                                    <td <?php
+                                if ($torque->medida >= 528) {
+                                    echo 'style="background-color: #F96161 "';
+                                } else {
+                                    if ($torque->medida <= 432) {
+                                        echo 'style="background-color: #FFF300 "';
+                                    } else {
+                                        echo 'style="background-color: #8DF961"';
+                                    }
+                                }
+                                ?>><?php echo $torque->medida ?></td>
+                                    <td><?php echo $torque->fecha ?></td>
+                                    <td><?php echo $torque->hora ?></td>
+                                    <td> <button class="btn btn-primary" id="myImage1" onclick="changeImage4()" src="pulsa.png" width="150" height="150">verificar</button>   </td>
+                                    <td><form action="borrarCRtornillo4.php" > <button  class="btn btn-danger" type="submit" id="submit" name="borrar" > Reintentar </button>  </form>   </td>
+                                </tr>
+                            <?php } ?>
+                                
+                                <?php while ($torque = $result44->fetchObject()) { ?>
+                                <tr>
+                                    <td> 4 </td>                          
+                                    <td <?php
+                                if ($torque->medida >= 528) {
+                                    echo 'style="background-color: #F96161 "';
+                                } else {
+                                    if ($torque->medida <= 432) {
+                                        echo 'style="background-color: #FFF300 "';
+                                    } else {
+                                        echo 'style="background-color: #8DF961"';
+                                    }
+                                }
+                                ?>><?php echo $torque->medida ?></td>
+                                    <td><?php echo $torque->fecha ?></td>
+                                    <td><?php echo $torque->hora ?></td>
+                                    <td> <button class="btn btn-primary" id="myImage1" onclick="changeImage44()" src="pulsa.png" width="150" height="150">verificar</button>   </td>
+                                    <td><form action="borraCRtornillo4.php" > <button  class="btn btn-danger" type="submit" id="submit" name="borrar" > Reintentar </button>  </form>   </td>
+                                </tr>
+                            <?php } ?>
+
+                            <?php while ($torque = $result5->fetchObject()) { ?>
+                                <tr>
+                                    <td> 5 </td>                          
+                                    <td <?php
+                                if ($torque->medida >= 528) {
+                                    echo 'style="background-color: #F96161 "';
+                                } else {
+                                    if ($torque->medida <= 432) {
+                                        echo 'style="background-color: #FFF300 "';
+                                    } else {
+                                        echo 'style="background-color: #8DF961"';
+                                    }
+                                }
+                                ?>><?php echo $torque->medida ?></td>
+                                    <td><?php echo $torque->fecha ?></td>
+                                    <td><?php echo $torque->hora ?></td>
+                                    <td> <button class="btn btn-primary" id="myImage1" onclick="changeImage5()" src="pulsa.png" width="150" height="150">verificar</button>   </td>
+                                </tr>
+                            <?php } ?>
+
+                            <?php while ($torque = $result6->fetchObject()) { ?>
+                                <tr>
+                                    <td> 6 </td>                          
+                                    <td <?php
+                                if ($torque->medida >= 528) {
+                                    echo 'style="background-color: #F96161 "';
+                                } else {
+                                    if ($torque->medida <= 432) {
+                                        echo 'style="background-color: #FFF300 "';
+                                    } else {
+                                        echo 'style="background-color: #8DF961"';
+                                    }
+                                }
+                                ?>><?php echo $torque->medida ?></td>
+                                    <td><?php echo $torque->fecha ?></td>
+                                    <td><?php echo $torque->hora ?></td>
+                                    <td> <button class="btn btn-primary" id="myImage1" onclick="changeImage6()" src="pulsa.png" width="150" height="150">verificar</button>   </td>
+                                </tr>
+                            <?php } ?>
+
+                            <?php while ($torque = $result7->fetchObject()) { ?>
+                                <tr>
+                                    <td> 7 </td>                          
+                                    <td id ="val" <?php
+                                if ($torque->medida >= 528) {
+                                    echo 'style="background-color: #F96161 "';
+                                } else {
+                                    if ($torque->medida <= 432) {
+                                        echo 'style="background-color: #FFF300 "';
+                                    } else {
+                                        echo 'style="background-color: #8DF961"';
+                                    }
+                                }
+                                ?>><?php echo $torque->medida ?></td>
+                                    <td><?php echo $torque->fecha ?></td>
+                                    <td><?php echo $torque->hora ?></td>
+                                    <td> <button class="btn btn-primary" id="myImage1" onclick="changeImage7()" src="pulsa.png" width="150" height="150">verificar</button>   </td>
+                                </tr>
+                            <?php } ?>
+
+                            <?php while ($torque = $result8->fetchObject()) { ?>
+                                <tr>
+                                    <td> 8 </td>                          
+                                    <td id="celda" <?php
+                                if ($torque->medida >= 528) {
+                                    echo 'style="background-color: #F96161"';
+                                } else {
+                                    if ($torque->medida <= 432) {
+                                        echo 'style="background-color: #FFF300 "';
+                                    } else {
+                                        echo 'style="background-color: #8DF961"';
+                                    }
+                                }
+                                ?>><text id="texto"><?php echo $torque->medida ?></text></td>
+                                    <td><?php echo $torque->fecha ?></td>
+                                    <td><?php echo $torque->hora ?></td>
+                                    <td> <button class="btn btn-primary" id="myImage1" onclick="changeImage8()" src="pulsa.png" width="150" height="150">verificar</button>   </td>
+
+                                </tr>
+                            <?php } ?>
+
+
+
+
+                        </tbody>
+                    </table>
+                </div><!--FIN DE COLUMNA IZQUIERDA-->
+                <!--INICIO DE COLUMNA DERECHA-->
+                <div class="col" >
+                    <hr>
+
+                    <center>
+                        <video autoplay muted loop  id="myVideo" src="img/CajaRodamiento/MotorTrasera_CR.mp4" width="500" height="500" align="right"></video>
+                    </center>
+
+
+
+
+                <!-- <img src="img/foto_traserabearing.jpg" class="card-img-top" alt="...">-->
+
+                    <!-- <div class="spinner"></div>-->
+                    <script>
+
+
+
+                        function changeImage1() {
+                            alert('Torque 1 Ok');
+                            var video = document.getElementById('myVideo');
+
+                            if (video.getAttribute('src') == "img/CajaRodamiento/MotorTrasera_CR.mp4") {
+                                video.src = "img/CajaRodamiento/CR_tornillo1verde.mp4";
+                            } else {
+
+                                video.src = "img/CajaRodamiento/CR_tornillo1verde.mp4";
+                            }
+                        }
+
+
+
+                        function changeImage2() {
+                            alert(' Torque 2 Fuera de rango');
+                            var video = document.getElementById('myVideo');
+
+                            if (video.getAttribute('src') == "img/CajaRodamiento/MotorTrasera_CR.mp4") {
+                                video.src = "img/CajaRodamiento/CR_tornillo2rojo.mp4";
+                            } else {
+
+                                video.src = "img/CajaRodamiento/CR_tornillo2rojo.mp4";
+                            }
+                        }
+
+                        function changeImage22() {
+                            alert(' Torque 2 OK');
+                            var video = document.getElementById('myVideo');
+
+                            if (video.getAttribute('src') == "img/CajaRodamiento/MotorTrasera_CR.mp4") {
+                                video.src = "img/CajaRodamiento/CR_tornillo2verde.mp4";
+                            } else {
+
+                                video.src = "img/CajaRodamiento/CR_tornillo2verde.mp4";
+                            }
+                        }
+
+                        function changeImage3() {
+                            alert('Torque 3 Fuera de rango');
+                            var video = document.getElementById('myVideo');
+
+                            if (video.getAttribute('src') == "img/CajaRodamiento/MotorTrasera_CR.mp4") {
+                                video.src = "img/CajaRodamiento/CR_tornillo3rojo.mp4";
+                            } else {
+
+                                video.src = "img/CajaRodamiento/CR_tornillo3rojo.mp4";
+                            }
+                        }
+
+                        function changeImage33() {
+                            alert('Torque 3 OK');
+                            var video = document.getElementById('myVideo');
+
+                            if (video.getAttribute('src') == "img/CajaRodamiento/MotorTrasera_CR.mp4") {
+                                video.src = "img/CajaRodamiento/CR_tornillo3verde.mp4";
+                            } else {
+
+                                video.src = "img/CajaRodamiento/CR_tornillo3verde.mp4";
+                            }
+                        }
+
+                        function changeImage4() {
+                            alert('Torque 4 Fuera de rango');
+                            var video = document.getElementById('myVideo');
+
+                            if (video.getAttribute('src') == "img/CajaRodamiento/MotorTrasera_CR.mp4") {
+                                video.src = "img/CajaRodamiento/CR_tornillo4rojo.mp4";
+                            } else {
+
+                                video.src = "img/CajaRodamiento/CR_tornillo4rojo.mp4";
+                            }
+                        }
+                        
+                        function changeImage44() {
+                            alert('Torque 4 OK');
+                            var video = document.getElementById('myVideo');
+
+                            if (video.getAttribute('src') == "img/CajaRodamiento/MotorTrasera_CR.mp4") {
+                                video.src = "img/CajaRodamiento/CR_tornillo4verde.mp4";
+                            } else {
+
+                                video.src = "img/CajaRodamiento/CR_tornillo4verde.mp4";
+                            }
+                        }
+
+                        function changeImage5() {
+                            alert('Torque 5 Ok');
+                            var video = document.getElementById('myVideo');
+
+                            if (video.getAttribute('src') == "img/CajaRodamiento/MotorTrasera_CR.mp4") {
+                                video.src = "img/CajaRodamiento/CR_tornillo5verde.mp4";
+                            } else {
+
+                                video.src = "img/CajaRodamiento/CR_tornillo5verde.mp4";
+                            }
+                        }
+
+                        function changeImage6() {
+                            alert('Torque 6 Fuera de rango');
+                            var video = document.getElementById('myVideo');
+
+                            if (video.getAttribute('src') == "img/CajaRodamiento/MotorTrasera_CR.mp4") {
+                                video.src = "img/CajaRodamiento/CR_tornillo6rojo.mp4";
+                            } else {
+
+                                video.src = "img/CajaRodamiento/CR_tornillo6rojo.mp4";
+                            }
+                        }
+
+                        function changeImage7() {
+                            alert('Torque 7 Fuera de rango');
+                            var video = document.getElementById('myVideo');
+
+                            if (video.getAttribute('src') == "img/CajaRodamiento/MotorTrasera_CR.mp4") {
+                                video.src = "img/CajaRodamiento/CR_tornillo7ojo.mp4";
+                            } else {
+
+                                video.src = "img/CajaRodamiento/CR_tornillo7ojo.mp4";
+                            }
+                        }
+
+                        function changeImage8() {
+                            alert('Torque 8 Fuera de rango');
+                            var video = document.getElementById('myVideo');
+
+                            if (video.getAttribute('src') == "img/CajaRodamiento/MotorTrasera_CR.mp4") {
+                                video.src = "img/CajaRodamiento/CR_tornillo8rojo.mp4";
+                            } else {
+
+                                video.src = "img/CajaRodamiento/CR_tornillo8rojo.mp4";
+                            }
+                        }
+
+
+
+                    </script>
+
+
+
+                </div><!--FIN DE COLUMNA DERECHA-->
+
+            </div> <!--FIN DEL PRIMER APARTADO-->
+
+
+
+        </div><!-- Fin container -->
+
+        <!-- Bootstrap core JavaScript
+        ================================================== -->
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <script>window.jQuery || document.write('<script src="assets/js/vendor/jquery-slim.min.js"><\/script>')</script>
+        <script src="assets/js/vendor/popper.min.js"></script>
+        <script src="dist/js/bootstrap.min.js"></script>
+    </body>
+</html>
